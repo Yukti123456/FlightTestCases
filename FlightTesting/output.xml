@@ -1,0 +1,457 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 7.3.2 (Python 3.14.0 on win32)" generated="2025-12-08T00:23:10.474795" rpa="false" schemaversion="5">
+<suite id="s1" name="Login TestCase" source="C:\Users\ridhi\PycharmProjects\FlightTesting\FlightTesting\Testcases\Login_TestCase.robot">
+<kw name="Open Browser To Home" owner="LoginKeywords" type="SETUP">
+<kw name="Open Browser" owner="SeleniumLibrary">
+<msg time="2025-12-08T00:23:10.826267" level="INFO">Opening browser 'chrome' to base url 'https://testingmint.com/testingmint-flight-booking/'.</msg>
+<arg>${BASE_URL}</arg>
+<arg>${BROWSER}</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<status status="PASS" start="2025-12-08T00:23:10.825865" elapsed="4.871245"/>
+</kw>
+<kw name="Maximize Browser Window" owner="SeleniumLibrary">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" start="2025-12-08T00:23:15.697451" elapsed="0.035858"/>
+</kw>
+<kw name="Set Selenium Timeout" owner="SeleniumLibrary">
+<arg>${TIMEOUT}</arg>
+<doc>Sets the timeout that is used by various keywords.</doc>
+<status status="PASS" start="2025-12-08T00:23:15.733551" elapsed="0.004501"/>
+</kw>
+<doc>Launching Browser</doc>
+<status status="PASS" start="2025-12-08T00:23:10.824588" elapsed="4.913681"/>
+</kw>
+<test id="s1-t1" name="Positive Login - should login with valid user" line="9">
+<kw name="Go To Login Page" owner="LoginKeywords">
+<kw name="Go To" owner="SeleniumLibrary">
+<msg time="2025-12-08T00:23:15.741462" level="INFO">Opening url 'https://testingmint.com/testingmint-flight-booking/'</msg>
+<arg>${BASE_URL}</arg>
+<doc>Navigates the current browser window to the provided ``url``.</doc>
+<status status="PASS" start="2025-12-08T00:23:15.741216" elapsed="0.164134"/>
+</kw>
+<kw name="Wait Until Page Contains Element" owner="SeleniumLibrary">
+<arg>xpath=//button[normalize-space(text())='Login']</arg>
+<arg>${TIMEOUT}</arg>
+<doc>Waits until the element ``locator`` appears on the current page.</doc>
+<status status="PASS" start="2025-12-08T00:23:15.905616" elapsed="0.017036"/>
+</kw>
+<kw name="Click Button" owner="SeleniumLibrary">
+<msg time="2025-12-08T00:23:15.923177" level="INFO">Clicking button 'xpath=//button[normalize-space(text())='Login']'.</msg>
+<arg>xpath=//button[normalize-space(text())='Login']</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<status status="PASS" start="2025-12-08T00:23:15.922937" elapsed="0.126792"/>
+</kw>
+<doc>Ensure we are on login page or go to login page</doc>
+<status status="PASS" start="2025-12-08T00:23:15.740101" elapsed="0.309935"/>
+</kw>
+<kw name="Login To Application" owner="LoginKeywords">
+<kw name="Set Selenium Speed" owner="SeleniumLibrary">
+<arg>1s</arg>
+<doc>Sets the delay that is waited after each Selenium command.</doc>
+<status status="PASS" start="2025-12-08T00:23:16.052786" elapsed="0.001312"/>
+</kw>
+<kw name="Run Keyword And Return Status" owner="BuiltIn">
+<kw name="Element Should Be Visible" owner="SeleniumLibrary">
+<msg time="2025-12-08T00:23:18.075877" level="INFO">Element 'id=username' is displayed.</msg>
+<arg>id=username</arg>
+<doc>Verifies that the element identified by ``locator`` is visible.</doc>
+<status status="PASS" start="2025-12-08T00:23:16.054539" elapsed="2.021585"/>
+</kw>
+<msg time="2025-12-08T00:23:18.076400" level="INFO">${loc_username_ok} = True</msg>
+<var>${loc_username_ok}</var>
+<arg>Element Should Be Visible</arg>
+<arg>id=username</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<status status="PASS" start="2025-12-08T00:23:16.054313" elapsed="2.022122"/>
+</kw>
+<kw name="Run Keyword If" owner="BuiltIn">
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2025-12-08T00:23:18.077324" level="INFO">Typing text 'testuser' into text field 'id=username'.</msg>
+<arg>id=username</arg>
+<arg>${username}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2025-12-08T00:23:18.077044" elapsed="4.892113"/>
+</kw>
+<arg>${loc_username_ok}</arg>
+<arg>Input Text</arg>
+<arg>id=username</arg>
+<arg>${username}</arg>
+<arg>ELSE</arg>
+<arg>Run Keyword If</arg>
+<arg>Run Keyword And Return Status</arg>
+<arg>Element Should Be Visible</arg>
+<arg>name=username</arg>
+<arg>Input Text</arg>
+<arg>name=username</arg>
+<arg>${username}</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<status status="PASS" start="2025-12-08T00:23:18.076696" elapsed="4.892798"/>
+</kw>
+<kw name="Run Keyword And Return Status" owner="BuiltIn">
+<kw name="Element Should Be Visible" owner="SeleniumLibrary">
+<msg time="2025-12-08T00:23:25.435391" level="INFO">Element 'id=password' is displayed.</msg>
+<arg>id=password</arg>
+<doc>Verifies that the element identified by ``locator`` is visible.</doc>
+<status status="PASS" start="2025-12-08T00:23:22.970458" elapsed="2.466349"/>
+</kw>
+<msg time="2025-12-08T00:23:25.437441" level="INFO">${loc_pwd_ok} = True</msg>
+<var>${loc_pwd_ok}</var>
+<arg>Element Should Be Visible</arg>
+<arg>id=password</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<status status="PASS" start="2025-12-08T00:23:22.969981" elapsed="2.467657"/>
+</kw>
+<kw name="Run Keyword If" owner="BuiltIn">
+<kw name="Input Password" owner="SeleniumLibrary">
+<msg time="2025-12-08T00:23:25.439329" level="INFO">Typing password into text field 'id=password'.</msg>
+<msg time="2025-12-08T00:23:28.414576" level="INFO">Temporally setting log level to: NONE</msg>
+<arg>id=password</arg>
+<arg>${password}</arg>
+<doc>Types the given password into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2025-12-08T00:23:25.438918" elapsed="4.049806"/>
+</kw>
+<arg>${loc_pwd_ok}</arg>
+<arg>Input Password</arg>
+<arg>id=password</arg>
+<arg>${password}</arg>
+<arg>ELSE</arg>
+<arg>Run Keyword If</arg>
+<arg>Run Keyword And Return Status</arg>
+<arg>Element Should Be Visible</arg>
+<arg>name=password</arg>
+<arg>Input Password</arg>
+<arg>name=password</arg>
+<arg>${password}</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<status status="PASS" start="2025-12-08T00:23:25.438307" elapsed="4.050754"/>
+</kw>
+<kw name="Run Keyword And Return Status" owner="BuiltIn">
+<kw name="Element Should Be Visible" owner="SeleniumLibrary">
+<msg time="2025-12-08T00:23:31.528299" level="INFO">Element 'xpath=//button[contains(., 'Login') or contains(., 'Sign in')]' is displayed.</msg>
+<arg>xpath=//button[contains(., 'Login') or contains(., 'Sign in')]</arg>
+<doc>Verifies that the element identified by ``locator`` is visible.</doc>
+<status status="PASS" start="2025-12-08T00:23:29.490073" elapsed="2.038493"/>
+</kw>
+<msg time="2025-12-08T00:23:31.528829" level="INFO">${loc_btn_ok} = True</msg>
+<var>${loc_btn_ok}</var>
+<arg>Element Should Be Visible</arg>
+<arg>xpath=//button[contains(., 'Login') or contains(., 'Sign in')]</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<status status="PASS" start="2025-12-08T00:23:29.489591" elapsed="2.039295"/>
+</kw>
+<kw name="Run Keyword If" owner="BuiltIn">
+<kw name="Click Button" owner="SeleniumLibrary">
+<msg time="2025-12-08T00:23:31.530222" level="INFO">Clicking button 'xpath=//button[normalize-space()='Sign In']'.</msg>
+<arg>xpath=//button[normalize-space()='Sign In']</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<status status="PASS" start="2025-12-08T00:23:31.529783" elapsed="5.145049"/>
+</kw>
+<arg>${loc_btn_ok}</arg>
+<arg>Click Button</arg>
+<arg>xpath=//button[normalize-space()='Sign In']</arg>
+<arg>ELSE</arg>
+<arg>Run Keyword If</arg>
+<arg>Run Keyword And Return Status</arg>
+<arg>Element Should Be Visible</arg>
+<arg>id=login-btn</arg>
+<arg>Click Button</arg>
+<arg>id=login-btn</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<status status="PASS" start="2025-12-08T00:23:31.529179" elapsed="5.146311"/>
+</kw>
+<kw name="Wait Until Page Contains" owner="SeleniumLibrary">
+<arg>${EMPTY}</arg>
+<arg>timeout=1s</arg>
+<doc>Waits until ``text`` appears on the current page.</doc>
+<status status="PASS" start="2025-12-08T00:23:36.675700" elapsed="1.030904"/>
+</kw>
+<arg>${VALID_USERNAME}</arg>
+<arg>${VALID_PASSWORD}</arg>
+<doc>Generic login with credentials.</doc>
+<status status="PASS" start="2025-12-08T00:23:16.052204" elapsed="21.654999"/>
+</kw>
+<kw name="Verify Login Success" owner="LoginKeywords">
+<kw name="Wait Until Keyword Succeeds" owner="BuiltIn">
+<kw name="Any Login Indicator Visible" owner="LoginKeywords">
+<kw name="Run Keyword And Return Status" owner="BuiltIn">
+<kw name="Page Should Contain" owner="SeleniumLibrary">
+<msg time="2025-12-08T00:23:39.731550" level="INFO">Current page contains text 'TestingMint's Premium Flight Booking'.</msg>
+<arg>TestingMint's Premium Flight Booking</arg>
+<doc>Verifies that current page contains ``text``.</doc>
+<status status="PASS" start="2025-12-08T00:23:37.711059" elapsed="2.021071"/>
+</kw>
+<msg time="2025-12-08T00:23:39.732345" level="INFO">${text_ok} = True</msg>
+<var>${text_ok}</var>
+<arg>Page Should Contain</arg>
+<arg>TestingMint's Premium Flight Booking</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<status status="PASS" start="2025-12-08T00:23:37.710703" elapsed="2.021685"/>
+</kw>
+<kw name="Run Keyword And Return Status" owner="BuiltIn">
+<kw name="Element Should Be Visible" owner="SeleniumLibrary">
+<msg time="2025-12-08T00:23:41.872274" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="selenium-screenshot-1.png"&gt;&lt;img src="selenium-screenshot-1.png" width="800px"&gt;&lt;/a&gt;</msg>
+<msg time="2025-12-08T00:23:41.872898" level="FAIL">Element with locator 'css:.user-profile' not found.</msg>
+<arg>css:.user-profile</arg>
+<doc>Verifies that the element identified by ``locator`` is visible.</doc>
+<status status="FAIL" start="2025-12-08T00:23:39.733466" elapsed="2.149370">Element with locator 'css:.user-profile' not found.</status>
+</kw>
+<msg time="2025-12-08T00:23:41.883414" level="INFO">${profile_ok} = False</msg>
+<var>${profile_ok}</var>
+<arg>Element Should Be Visible</arg>
+<arg>css:.user-profile</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<status status="PASS" start="2025-12-08T00:23:39.733104" elapsed="2.150416"/>
+</kw>
+<kw name="Run Keyword And Return Status" owner="BuiltIn">
+<kw name="Element Should Be Visible" owner="SeleniumLibrary">
+<msg time="2025-12-08T00:23:44.023715" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="selenium-screenshot-66.png"&gt;&lt;img src="selenium-screenshot-66.png" width="800px"&gt;&lt;/a&gt;</msg>
+<msg time="2025-12-08T00:23:44.025095" level="FAIL">Element with locator 'xpath=//a[contains(translate(normalize-space(.), 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz'), 'logout')]' not found.</msg>
+<arg>xpath=//a[contains(translate(normalize-space(.), 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz'), 'logout')]</arg>
+<doc>Verifies that the element identified by ``locator`` is visible.</doc>
+<status status="FAIL" start="2025-12-08T00:23:41.884371" elapsed="2.143171">Element with locator 'xpath=//a[contains(translate(normalize-space(.), 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz'), 'logout')]' not found.</status>
+</kw>
+<msg time="2025-12-08T00:23:44.027915" level="INFO">${logout_ok} = False</msg>
+<var>${logout_ok}</var>
+<arg>Element Should Be Visible</arg>
+<arg>xpath=//a[contains(translate(normalize-space(.), 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz'), 'logout')]</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<status status="PASS" start="2025-12-08T00:23:41.883985" elapsed="2.144000"/>
+</kw>
+<kw name="Evaluate" owner="BuiltIn">
+<msg time="2025-12-08T00:23:44.028935" level="INFO">${any} = True</msg>
+<var>${any}</var>
+<arg>${text_ok} or ${profile_ok} or ${logout_ok}</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2025-12-08T00:23:44.028291" elapsed="0.000700"/>
+</kw>
+<kw name="Run Keyword If" owner="BuiltIn">
+<kw name="Return From Keyword" owner="BuiltIn">
+<msg time="2025-12-08T00:23:44.029702" level="INFO">Returning from the enclosing user keyword.</msg>
+<doc>Returns from the enclosing user keyword.</doc>
+<status status="PASS" start="2025-12-08T00:23:44.029567" elapsed="0.000259"/>
+</kw>
+<arg>${any}</arg>
+<arg>Return From Keyword</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<status status="PASS" start="2025-12-08T00:23:44.029225" elapsed="0.000710"/>
+</kw>
+<kw name="Fail" owner="BuiltIn">
+<arg>No login indicators found.</arg>
+<doc>Fails the test with the given message and optionally alters its tags.</doc>
+<status status="NOT RUN" start="2025-12-08T00:23:44.030119" elapsed="0.000048"/>
+</kw>
+<doc>Returns successfully if any known login-success indicator is visible on the page.</doc>
+<status status="PASS" start="2025-12-08T00:23:37.710146" elapsed="6.320142"/>
+</kw>
+<arg>5 times</arg>
+<arg>2s</arg>
+<arg>Any Login Indicator Visible</arg>
+<doc>Runs the specified keyword and retries if it fails.</doc>
+<status status="PASS" start="2025-12-08T00:23:37.709455" elapsed="6.320926"/>
+</kw>
+<kw name="Get Location" owner="SeleniumLibrary">
+<msg time="2025-12-08T00:23:45.043685" level="INFO">${current} = https://testingmint.com/testingmint-flight-booking/</msg>
+<var>${current}</var>
+<doc>Returns the current browser window URL.</doc>
+<status status="PASS" start="2025-12-08T00:23:44.030562" elapsed="1.013270"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2025-12-08T00:23:45.044896" level="INFO">Current URL after login: https://testingmint.com/testingmint-flight-booking/</msg>
+<arg>Current URL after login: ${current}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2025-12-08T00:23:45.044258" elapsed="0.000775"/>
+</kw>
+<doc>Waits until one of the common login-success indicators appears, otherwise logs current URL and fails.</doc>
+<status status="PASS" start="2025-12-08T00:23:37.708610" elapsed="7.336602"/>
+</kw>
+<doc>Positive login: valid credentials should log user in</doc>
+<status status="PASS" start="2025-12-08T00:23:15.738513" elapsed="29.348477"/>
+</test>
+<test id="s1-t2" name="Negative Login - invalid credentials show error" line="15">
+<kw name="Go To Login Page After Positive" owner="LoginKeywords">
+<kw name="Click Button" owner="SeleniumLibrary">
+<msg time="2025-12-08T00:23:45.201509" level="INFO">Clicking button 'xpath=//button[span[contains(text(),'Logout')]]'.</msg>
+<arg>xpath=//button[span[contains(text(),'Logout')]]</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<status status="PASS" start="2025-12-08T00:23:45.201017" elapsed="5.161247"/>
+</kw>
+<kw name="Wait Until Page Contains Element" owner="SeleniumLibrary">
+<arg>xpath=//button[normalize-space(text())='Login']</arg>
+<arg>${TIMEOUT}</arg>
+<doc>Waits until the element ``locator`` appears on the current page.</doc>
+<status status="PASS" start="2025-12-08T00:23:50.362677" elapsed="1.021416"/>
+</kw>
+<kw name="Click Button" owner="SeleniumLibrary">
+<msg time="2025-12-08T00:23:51.384924" level="INFO">Clicking button 'xpath=//button[normalize-space(text())='Login']'.</msg>
+<arg>xpath=//button[normalize-space(text())='Login']</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<status status="PASS" start="2025-12-08T00:23:51.384501" elapsed="5.130515"/>
+</kw>
+<doc>It will navigate to login page again,after succesfull login,</doc>
+<status status="PASS" start="2025-12-08T00:23:45.200332" elapsed="11.315055"/>
+</kw>
+<kw name="Login To Application" owner="LoginKeywords">
+<kw name="Set Selenium Speed" owner="SeleniumLibrary">
+<arg>1s</arg>
+<doc>Sets the delay that is waited after each Selenium command.</doc>
+<status status="PASS" start="2025-12-08T00:23:56.517627" elapsed="0.000435"/>
+</kw>
+<kw name="Run Keyword And Return Status" owner="BuiltIn">
+<kw name="Element Should Be Visible" owner="SeleniumLibrary">
+<msg time="2025-12-08T00:23:58.559866" level="INFO">Element 'id=username' is displayed.</msg>
+<arg>id=username</arg>
+<doc>Verifies that the element identified by ``locator`` is visible.</doc>
+<status status="PASS" start="2025-12-08T00:23:56.518635" elapsed="2.041487"/>
+</kw>
+<msg time="2025-12-08T00:23:58.560405" level="INFO">${loc_username_ok} = True</msg>
+<var>${loc_username_ok}</var>
+<arg>Element Should Be Visible</arg>
+<arg>id=username</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<status status="PASS" start="2025-12-08T00:23:56.518357" elapsed="2.042097"/>
+</kw>
+<kw name="Run Keyword If" owner="BuiltIn">
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2025-12-08T00:23:58.561639" level="INFO">Typing text 'wrong_user@example.com' into text field 'id=username'.</msg>
+<arg>id=username</arg>
+<arg>${username}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2025-12-08T00:23:58.561191" elapsed="3.190362"/>
+</kw>
+<arg>${loc_username_ok}</arg>
+<arg>Input Text</arg>
+<arg>id=username</arg>
+<arg>${username}</arg>
+<arg>ELSE</arg>
+<arg>Run Keyword If</arg>
+<arg>Run Keyword And Return Status</arg>
+<arg>Element Should Be Visible</arg>
+<arg>name=username</arg>
+<arg>Input Text</arg>
+<arg>name=username</arg>
+<arg>${username}</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<status status="PASS" start="2025-12-08T00:23:58.560764" elapsed="3.191047"/>
+</kw>
+<kw name="Run Keyword And Return Status" owner="BuiltIn">
+<kw name="Element Should Be Visible" owner="SeleniumLibrary">
+<msg time="2025-12-08T00:24:03.793298" level="INFO">Element 'id=password' is displayed.</msg>
+<arg>id=password</arg>
+<doc>Verifies that the element identified by ``locator`` is visible.</doc>
+<status status="PASS" start="2025-12-08T00:24:01.752513" elapsed="2.041021"/>
+</kw>
+<msg time="2025-12-08T00:24:03.793831" level="INFO">${loc_pwd_ok} = True</msg>
+<var>${loc_pwd_ok}</var>
+<arg>Element Should Be Visible</arg>
+<arg>id=password</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<status status="PASS" start="2025-12-08T00:24:01.752182" elapsed="2.041702"/>
+</kw>
+<kw name="Run Keyword If" owner="BuiltIn">
+<kw name="Input Password" owner="SeleniumLibrary">
+<msg time="2025-12-08T00:24:03.795730" level="INFO">Typing password into text field 'id=password'.</msg>
+<msg time="2025-12-08T00:24:05.844168" level="INFO">Temporally setting log level to: NONE</msg>
+<arg>id=password</arg>
+<arg>${password}</arg>
+<doc>Types the given password into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2025-12-08T00:24:03.795116" elapsed="3.130471"/>
+</kw>
+<arg>${loc_pwd_ok}</arg>
+<arg>Input Password</arg>
+<arg>id=password</arg>
+<arg>${password}</arg>
+<arg>ELSE</arg>
+<arg>Run Keyword If</arg>
+<arg>Run Keyword And Return Status</arg>
+<arg>Element Should Be Visible</arg>
+<arg>name=password</arg>
+<arg>Input Password</arg>
+<arg>name=password</arg>
+<arg>${password}</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<status status="PASS" start="2025-12-08T00:24:03.794645" elapsed="3.131217"/>
+</kw>
+<kw name="Run Keyword And Return Status" owner="BuiltIn">
+<kw name="Element Should Be Visible" owner="SeleniumLibrary">
+<msg time="2025-12-08T00:24:08.950315" level="INFO">Element 'xpath=//button[contains(., 'Login') or contains(., 'Sign in')]' is displayed.</msg>
+<arg>xpath=//button[contains(., 'Login') or contains(., 'Sign in')]</arg>
+<doc>Verifies that the element identified by ``locator`` is visible.</doc>
+<status status="PASS" start="2025-12-08T00:24:06.926664" elapsed="2.023891"/>
+</kw>
+<msg time="2025-12-08T00:24:08.950875" level="INFO">${loc_btn_ok} = True</msg>
+<var>${loc_btn_ok}</var>
+<arg>Element Should Be Visible</arg>
+<arg>xpath=//button[contains(., 'Login') or contains(., 'Sign in')]</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<status status="PASS" start="2025-12-08T00:24:06.926280" elapsed="2.024646"/>
+</kw>
+<kw name="Run Keyword If" owner="BuiltIn">
+<kw name="Click Button" owner="SeleniumLibrary">
+<msg time="2025-12-08T00:24:08.951934" level="INFO">Clicking button 'xpath=//button[normalize-space()='Sign In']'.</msg>
+<arg>xpath=//button[normalize-space()='Sign In']</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<status status="PASS" start="2025-12-08T00:24:08.951620" elapsed="5.163074"/>
+</kw>
+<arg>${loc_btn_ok}</arg>
+<arg>Click Button</arg>
+<arg>xpath=//button[normalize-space()='Sign In']</arg>
+<arg>ELSE</arg>
+<arg>Run Keyword If</arg>
+<arg>Run Keyword And Return Status</arg>
+<arg>Element Should Be Visible</arg>
+<arg>id=login-btn</arg>
+<arg>Click Button</arg>
+<arg>id=login-btn</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<status status="PASS" start="2025-12-08T00:24:08.951221" elapsed="5.163839"/>
+</kw>
+<kw name="Wait Until Page Contains" owner="SeleniumLibrary">
+<arg>${EMPTY}</arg>
+<arg>timeout=1s</arg>
+<doc>Waits until ``text`` appears on the current page.</doc>
+<status status="PASS" start="2025-12-08T00:24:14.115511" elapsed="1.121904"/>
+</kw>
+<arg>${INVALID_USERNAME}</arg>
+<arg>${INVALID_PASSWORD}</arg>
+<doc>Generic login with credentials.</doc>
+<status status="PASS" start="2025-12-08T00:23:56.516821" elapsed="18.720927"/>
+</kw>
+<kw name="Verify Login Failed" owner="LoginKeywords">
+<kw name="Wait Until Page Contains Element" owner="SeleniumLibrary">
+<arg>xpath=//div[normalize-space()='Invalid credentials. Use testuser/password']</arg>
+<arg>${TIMEOUT}</arg>
+<doc>Waits until the element ``locator`` appears on the current page.</doc>
+<status status="PASS" start="2025-12-08T00:24:15.269901" elapsed="1.169140"/>
+</kw>
+<kw name="Page Should Contain" owner="SeleniumLibrary">
+<msg time="2025-12-08T00:24:18.549321" level="INFO">Current page contains text 'Invalid credentials. Use testuser/password'.</msg>
+<arg>Invalid credentials. Use testuser/password</arg>
+<doc>Verifies that current page contains ``text``.</doc>
+<status status="PASS" start="2025-12-08T00:24:16.443640" elapsed="2.105938"/>
+</kw>
+<doc>Looks for a visible error message indicating failed login</doc>
+<status status="PASS" start="2025-12-08T00:24:15.269162" elapsed="3.280895"/>
+</kw>
+<doc>Negative login: invalid credentials should show error message</doc>
+<status status="PASS" start="2025-12-08T00:23:45.198313" elapsed="33.352906"/>
+</test>
+<kw name="Close All Browsers" owner="SeleniumLibrary" type="TEARDOWN">
+<doc>Closes all open browsers and resets the browser cache.</doc>
+<status status="PASS" start="2025-12-08T00:24:18.553446" elapsed="4.558310"/>
+</kw>
+<doc>TestingMint — Flight practice: Login + Search module tests (positive &amp; negative)</doc>
+<status status="PASS" start="2025-12-08T00:23:10.476966" elapsed="72.635018"/>
+</suite>
+<statistics>
+<total>
+<stat pass="2" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat name="Login TestCase" id="s1" pass="2" fail="0" skip="0">Login TestCase</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>
