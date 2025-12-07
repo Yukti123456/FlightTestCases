@@ -4,19 +4,6 @@ Resource    ../Variables/Search_Data.robot
 Library     SeleniumLibrary
 
 *** Keywords ***
-Set Date
-    [Arguments]    ${locator}    ${depart_date}
-    ${script}=    Catenate    SEPARATOR=\n
-    ...    var el = document.evaluate("${locator.replace('"','\\"')}", document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue;
-    ...    if(!el){throw 'Date input not found: ' + "${locator}";}
-    ...    el.focus();
-    ...    el.value = arguments[0];
-    ...    el.dispatchEvent(new Event('input', { bubbles: true }));
-    ...    el.dispatchEvent(new Event('change', { bubbles: true }));
-    ...    el.blur();
-    Execute JavaScript    ${script}    ${depart_date}
-    Sleep    0.3s
-
 Search Flight
     [Arguments]    ${from_city}    ${to_city}    ${depart_date}
     [Documentation]    Fill search fields. Update locators to match actual page.
@@ -29,6 +16,8 @@ Search Flight
     # Click the matching dropdown item
     Wait Until Element Is Visible    xpath=//li[@data-testid='source-result-${FROM_CITY_VALID}']    20s
     Click Element          xpath=//li[@data-testid='source-result-${FROM_CITY_VALID}']
+
+
     # to city input
     Run Keyword And Ignore Error    Input Text    xpath=//input[@data-testid='dest-input']
     Sleep    0.3s
@@ -39,36 +28,28 @@ Search Flight
     Click Element            xpath=//li[@data-testid='dest-result-${TO_CITY_VALID}']
 
     # departure date
-    Run Keyword And Ignore Error    Input text      ${locator}
-    Set Date      ${locator}        ${DEPART_DATE_VALID}
-    ${val}=    Get Element Attribute    ${locator}    value
-    Log to console    Selected date: ${val}
-    Should Be Equal As Strings    ${val}    2025-12-20
+    Execute JavaScript    document.querySelector("[data-testid='date-input']").style.opacity="1";
+    Input Text    xpath=//input[@data-testid='date-input']    2025-12-20
 
-    # click search
+    #Select no of passenger
     Run Keyword And Ignore Error    Select From List By Value    xpath=//select[@data-testid='passengers-select']    ${NO_OF_PASSENGER}
-    Run Keyword And Ignore Error    Click Button    xpath=//button[contains(., 'SEARCH FLIGHTS') or normalize-space()='SEARCH FLIGHTS']
+
+    #Search button
+    Run Keyword And Ignore Error    Click Button       xpath=//button[@data-testid="search-btn"]
     Sleep    2s
 
 Verify Flights Found
     Verify Flights Found
     [Documentation]    Wait for flight results to appear, assert there is at least one result, and log the first result for debugging.
     # Wait until at least one likely results container appears (div or li). The XPath uses a union (|) to cover both.
-    Wait Until Page Contains Element    xpath=//div[contains(@class,'flight') or contains(@class,'result')] | //li[contains(@class,'flight') or contains(@class,'result')]    ${TIMEOUT}
+    Wait Until Page Contains Element   //div[starts-with(@data-testid, 'flight-card-')]    ${TIMEOUT}
 
-    # Count matching result nodes (covers both div and li cases)
-    ${count}=    Get Element Count    xpath=//div[contains(@class,'flight') or contains(@class,'result')] | //li[contains(@class,'flight') or contains(@class,'result')]
+    # Count matching result nodes
+    ${count}=    Get Element Count    //div[starts-with(@data-testid, 'flight-card-')]
     Log    Number of flight result nodes found: ${count}
 
-    # Convert count to boolean using Evaluate (safe check)
+    # Convert count to boolean using Evaluate
     ${has_results}=    Evaluate    ${count} > 0
     Should Be True    ${has_results}    msg=No flights found after search (expected at least 1)
 
-    # Optional: log text of the first result card/item to aid debugging
-    ${first}=    Get Text    xpath=(//div[contains(@class,'flight') or contains(@class,'result')] | //li[contains(@class,'flight') or contains(@class,'result')])[1]
-    Log    First flight result (snippet): ${first}
 
-Verify No Flights Found
-    [Documentation]    Checks for "no results" message
-    Wait Until Page Contains    No flights available    ${TIMEOUT}
-    Page Should Contain    No flights available

@@ -14,4 +14,4 @@ ${NO_OF_PASSENGER}     1
 ${FROM_CITY_BAD}      NoTownA
 ${TO_CITY_BAD}        NoTownB
 ${DEPART_DATE_BAD}    2025-12-20
-${NO_OF_PASSENGER}     1
+${NO_OF_PASSENGER}     2

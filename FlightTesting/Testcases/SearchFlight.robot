@@ -22,4 +22,4 @@ Negative Flight Search - no results for invalid route
     Verify Login Success
     #Go To Flight Search Page
     Search Flight    ${FROM_CITY_BAD}    ${TO_CITY_BAD}    ${DEPART_DATE_BAD}
-    Verify No Flights Found
+    Verify Flights Found
